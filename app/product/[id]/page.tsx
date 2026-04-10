@@ -76,6 +76,8 @@ export default function ProductPage() {
                   <button
                     key={i}
                     onClick={() => setSelectedImage(i)}
+                    aria-label={`View image ${i + 1} of ${product.images.length}`}
+                    aria-pressed={selectedImage === i}
                     className={`relative w-16 aspect-[3/4] overflow-hidden transition-all duration-200 ${
                       selectedImage === i
                         ? 'ring-1 ring-oak-warm opacity-100'
@@ -134,6 +136,8 @@ export default function ProductPage() {
                     <button
                       key={i}
                       onClick={() => setSelectedImage(i)}
+                      aria-label={`View image ${i + 1} of ${product.images.length}`}
+                      aria-pressed={selectedImage === i}
                       className={`relative w-16 aspect-[3/4] overflow-hidden shrink-0 transition-all duration-200 ${
                         selectedImage === i
                           ? 'ring-1 ring-oak-warm opacity-100'
@@ -222,7 +226,7 @@ export default function ProductPage() {
             {/* CTA */}
             <Link
               href={`/contact?product=${encodeURIComponent(product.name)}`}
-              className="group relative overflow-hidden inline-flex items-center justify-center font-inter text-[10px] tracking-[0.35em] uppercase bg-oak-warm text-oak-950 hover:text-oak-950 px-10 py-5 mb-3 transition-colors duration-300"
+              className="group relative overflow-hidden inline-flex items-center justify-center font-inter text-[10px] tracking-[0.35em] uppercase bg-oak-warm text-oak-950 hover:text-oak-950 px-10 py-5 mb-3 transition-colors duration-300 min-h-[52px]"
             >
               <span className="relative z-10">
                 {isCustom ? 'Start a Commission' : 'Contact to Purchase'}

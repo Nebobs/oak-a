@@ -143,16 +143,20 @@ function ContactForm() {
                 >
                   {/* Name */}
                   <div className="flex flex-col gap-2">
-                    <label className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
-                      Name <span className="text-oak-warm">*</span>
+                    <label htmlFor="contact-name" className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
+                      Name <span className="text-oak-warm" aria-hidden="true">*</span>
                     </label>
                     <input
+                      id="contact-name"
                       {...register('name', { required: 'Name is required' })}
                       placeholder="Your name"
+                      aria-required="true"
+                      aria-invalid={!!errors.name}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
                       className={errors.name ? 'border-red-900/60' : ''}
                     />
                     {errors.name && (
-                      <span className="font-inter text-[9px] text-red-400 tracking-wide">
+                      <span id="name-error" role="alert" className="font-inter text-[9px] text-red-400 tracking-wide">
                         {errors.name.message}
                       </span>
                     )}
@@ -160,10 +164,11 @@ function ContactForm() {
 
                   {/* Email */}
                   <div className="flex flex-col gap-2">
-                    <label className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
-                      Email <span className="text-oak-warm">*</span>
+                    <label htmlFor="contact-email" className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
+                      Email <span className="text-oak-warm" aria-hidden="true">*</span>
                     </label>
                     <input
+                      id="contact-email"
                       {...register('email', {
                         required: 'Email is required',
                         pattern: {
@@ -173,10 +178,13 @@ function ContactForm() {
                       })}
                       type="email"
                       placeholder="your@email.com"
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
                       className={errors.email ? 'border-red-900/60' : ''}
                     />
                     {errors.email && (
-                      <span className="font-inter text-[9px] text-red-400 tracking-wide">
+                      <span id="email-error" role="alert" className="font-inter text-[9px] text-red-400 tracking-wide">
                         {errors.email.message}
                       </span>
                     )}
@@ -184,10 +192,11 @@ function ContactForm() {
 
                   {/* Product interest */}
                   <div className="flex flex-col gap-2">
-                    <label className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
+                    <label htmlFor="contact-product" className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
                       Piece of Interest
                     </label>
                     <input
+                      id="contact-product"
                       {...register('productInterest')}
                       placeholder="Which piece are you asking about? (optional)"
                     />
@@ -195,17 +204,21 @@ function ContactForm() {
 
                   {/* Message */}
                   <div className="flex flex-col gap-2">
-                    <label className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
-                      Message <span className="text-oak-warm">*</span>
+                    <label htmlFor="contact-message" className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
+                      Message <span className="text-oak-warm" aria-hidden="true">*</span>
                     </label>
                     <textarea
+                      id="contact-message"
                       {...register('message', { required: 'Message is required' })}
                       rows={6}
                       placeholder="Tell me what you're looking for, your sizing, or anything else..."
+                      aria-required="true"
+                      aria-invalid={!!errors.message}
+                      aria-describedby={errors.message ? 'message-error' : undefined}
                       className={`resize-none ${errors.message ? 'border-red-900/60' : ''}`}
                     />
                     {errors.message && (
-                      <span className="font-inter text-[9px] text-red-400 tracking-wide">
+                      <span id="message-error" role="alert" className="font-inter text-[9px] text-red-400 tracking-wide">
                         {errors.message.message}
                       </span>
                     )}
@@ -213,10 +226,11 @@ function ContactForm() {
 
                   {/* Instagram (optional) */}
                   <div className="flex flex-col gap-2">
-                    <label className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
+                    <label htmlFor="contact-instagram" className="font-inter text-[9px] tracking-[0.3em] text-oak-muted uppercase">
                       Instagram Handle
                     </label>
                     <input
+                      id="contact-instagram"
                       {...register('instagram')}
                       placeholder="@yourhandle (optional)"
                     />
@@ -226,12 +240,13 @@ function ContactForm() {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="mt-4 font-inter text-[10px] tracking-[0.35em] uppercase bg-oak-warm text-oak-950 hover:bg-oak-light disabled:opacity-50 disabled:cursor-not-allowed px-10 py-5 transition-colors duration-300 flex items-center justify-center gap-3"
+                    className="mt-4 min-h-[52px] font-inter text-[10px] tracking-[0.35em] uppercase bg-oak-warm text-oak-950 hover:bg-oak-light disabled:opacity-50 disabled:cursor-not-allowed px-10 py-5 transition-colors duration-300 flex items-center justify-center gap-3"
+                    aria-busy={sending}
                   >
                     {sending ? (
                       <>
-                        <span className="w-3 h-3 border border-oak-950/40 border-t-oak-950 rounded-full animate-spin" />
-                        Sending
+                        <span className="w-3 h-3 border border-oak-950/40 border-t-oak-950 rounded-full animate-spin" aria-hidden="true" />
+                        <span>Sending…</span>
                       </>
                     ) : (
                       'Send Message'

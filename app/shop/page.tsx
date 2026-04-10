@@ -53,12 +53,27 @@ export default function ShopPage() {
         </div>
 
         {/* Filter tabs */}
-        <div className="flex flex-wrap gap-1 mb-16 border-b border-oak-800/60 pb-0">
+        <div
+          role="tablist"
+          aria-label="Filter collection by category"
+          className="flex flex-wrap gap-1 mb-16 border-b border-oak-800/60 pb-0"
+          onKeyDown={(e) => {
+            const tabs = availableFilters
+            const currentIndex = tabs.findIndex((f) => f.value === filter)
+            if (e.key === 'ArrowRight') {
+              setFilter(tabs[(currentIndex + 1) % tabs.length].value)
+            } else if (e.key === 'ArrowLeft') {
+              setFilter(tabs[(currentIndex - 1 + tabs.length) % tabs.length].value)
+            }
+          }}
+        >
           {availableFilters.map((f) => (
             <button
               key={f.value}
+              role="tab"
+              aria-selected={filter === f.value}
               onClick={() => setFilter(f.value)}
-              className={`font-inter text-[10px] tracking-[0.25em] uppercase px-5 py-4 transition-all duration-200 border-b-[1.5px] -mb-px ${
+              className={`font-inter text-[10px] tracking-[0.25em] uppercase px-5 py-4 min-h-[44px] transition-all duration-200 border-b-[1.5px] -mb-px ${
                 filter === f.value
                   ? 'text-oak-light border-oak-warm'
                   : 'text-oak-muted border-transparent hover:text-oak-light hover:border-oak-800'

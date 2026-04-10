@@ -53,10 +53,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
       <body>
+        {/* Skip navigation for keyboard users */}
+        <a href="#main-content" className="skip-link">Skip to content</a>
         {/* Grain texture overlay — purely decorative */}
         <div className="grain-overlay" aria-hidden="true" />
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <Analytics />
         <SpeedInsights />

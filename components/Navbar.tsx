@@ -104,9 +104,11 @@ export default function Navbar() {
 
             {/* Hamburger */}
             <button
-              className="flex flex-col gap-[5px] w-6 justify-center items-end cursor-pointer md:hidden"
+              className="flex flex-col gap-[5px] w-11 h-11 justify-center items-end cursor-pointer md:hidden"
               onClick={() => setMenuOpen((v) => !v)}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-nav"
             >
               <motion.span
                 animate={menuOpen ? { rotate: 45, y: 7, width: 24 } : { rotate: 0, y: 0, width: 24 }}
@@ -132,12 +134,16 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-nav"
             key="mobile-menu"
             initial={{ clipPath: 'inset(0 0 100% 0)' }}
             animate={{ clipPath: 'inset(0 0 0% 0)' }}
             exit={{ clipPath: 'inset(0 0 100% 0)' }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 bg-oak-950 flex flex-col"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
           >
             {/* Top bar replica */}
             <div className="h-16 flex items-center px-6 border-b border-oak-800/40">

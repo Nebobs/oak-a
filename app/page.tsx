@@ -148,7 +148,7 @@ export default async function HomePage() {
             </Link>
             <Link
               href="/shop"
-              className="font-inter text-[10px] tracking-[0.3em] text-oak-muted hover:text-oak-light uppercase transition-colors duration-300"
+              className="font-inter text-[10px] tracking-[0.3em] text-oak-muted hover:text-oak-light uppercase transition-colors duration-300 py-3 px-2"
             >
               Browse Collection →
             </Link>
