@@ -18,29 +18,37 @@ import type { Product } from '@/types'
 export const mockProducts: Product[] = [
   {
     id: 'mock-1',
-    name: 'Raw Selvedge No.1',
+    name: 'Workshop Black No.1',
     price: 280,
     category: 'jeans',
     description:
-      'Hand-cut from a single bolt of Japanese selvedge denim. Unfinished edges, raw hems. Every pair carries unique wear patterns from the process of making.',
+      'Wide-leg black canvas denim, hand-cut and sewn entirely in the workshop. Paint marks, raw edges, custom ring-closure hardware on the back waist. Every mark tells the story of how it was made.',
     story:
-      'Three weeks of pattern work. A single bolt of fabric sourced from a small mill outside Osaka. The first real piece from the workshop, and the one that made everything feel possible.',
-    images: [],
+      'Built from a heavy black canvas I had sitting in the workshop for months. The back closure hardware took three tries to get right. The paint marks were never planned — they happened during the process and stayed, because they should.',
+    images: [
+      '/images/denim-black-front.jpg',
+      '/images/denim-black-back.jpg',
+      '/images/denim-black-detail.jpg',
+    ],
     sizes: ['28', '30', '32', '34'],
     featured: true,
     available: true,
   },
   {
     id: 'mock-2',
-    name: 'Workshop Overshirt',
-    price: 195,
-    category: 'tops',
+    name: 'Raw Indigo No.1',
+    price: 320,
+    category: 'jeans',
     description:
-      'Heavy cotton canvas, hand-stitched bartacks, dropped shoulders. A work shirt elevated into something worth keeping.',
+      'Dark raw indigo denim, straight through the hip and thigh. Large back patch pockets, contrast yellow stitching, heavy unwashed fabric that will fade uniquely to the wearer over time.',
     story:
-      'Inspired by the shirts worn in workshops and studios for generations. Clothes that work as hard as the people in them.',
-    images: [],
-    sizes: ['S', 'M', 'L', 'XL'],
+      'The fabric came from a contact who sources deadstock selvedge. It is heavy, it is stiff when new, and it will be the best pair of jeans you own in two years. That was the whole idea.',
+    images: [
+      '/images/denim-raw-front.jpg',
+      '/images/denim-raw-back.jpg',
+      '/images/denim-raw-side.jpg',
+    ],
+    sizes: ['28', '30', '32', '34'],
     featured: true,
     available: true,
   },
@@ -60,6 +68,20 @@ export const mockProducts: Product[] = [
   },
   {
     id: 'mock-4',
+    name: 'Workshop Overshirt',
+    price: 195,
+    category: 'tops',
+    description:
+      'Heavy cotton canvas, hand-stitched bartacks, dropped shoulders. A work shirt elevated into something worth keeping.',
+    story:
+      'Inspired by the shirts worn in workshops and studios for generations. Clothes that work as hard as the people in them.',
+    images: [],
+    sizes: ['S', 'M', 'L', 'XL'],
+    featured: false,
+    available: true,
+  },
+  {
+    id: 'mock-5',
     name: 'Belgian Linen Shirt',
     price: 165,
     category: 'tops',
@@ -69,20 +91,6 @@ export const mockProducts: Product[] = [
       'Started as a personal piece. Three different people asked to buy it before it was finished. So it became part of the collection.',
     images: [],
     sizes: ['S', 'M', 'L'],
-    featured: false,
-    available: true,
-  },
-  {
-    id: 'mock-5',
-    name: 'Carpenter Trouser',
-    price: 240,
-    category: 'jeans',
-    description:
-      'Wide-leg, heavy cotton canvas, utility pockets placed by hand. Work wear for people who make things.',
-    story:
-      'Built for movement. Built for making. Built to last longer than any trend that might surround it.',
-    images: [],
-    sizes: ['28', '30', '32', '34', '36'],
     featured: false,
     available: true,
   },
