@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables ──────────────────────────────────────────────────────── */
+:root {
+  --color-bg: #0A0908;
+  --color-fg: #F8F5F0;
+  --color-warm: #C4A882;
+  --color-muted: #8A8275;
+  --color-surface: #141210;
+  --color-border: #2A2620;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Typography ─────────────────────────────────────────────────────────── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────── */
+::selection {
+  background: var(--color-warm);
+  color: var(--color-bg);
+}
+
+/* ─── Grain texture overlay ──────────────────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Utility classes ────────────────────────────────────────────────────── */
+.font-cormorant {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Editorial horizontal rule */
+.rule {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+}
+
+/* Letter spacing utilities */
+.tracking-editorial {
+  letter-spacing: 0.25em;
+}
+
+.tracking-widest-xl {
+  letter-spacing: 0.4em;
+}
+
+/* ─── Page transition wrapper ────────────────────────────────────────────── */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* ─── Product image placeholder ──────────────────────────────────────────── */
+.product-placeholder {
+  background: linear-gradient(
+    160deg,
+    #1a1712 0%,
+    #111009 40%,
+    #0a0908 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.product-placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    rgba(196, 168, 130, 0.06) 0%,
+    transparent 60%
+  );
+}
+
+/* ─── Focus styles ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 1px solid var(--color-warm);
+  outline-offset: 3px;
+}
+
+/* ─── Input base ─────────────────────────────────────────────────────────── */
+input,
+textarea,
+select {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-fg);
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  padding: 0.875rem 1rem;
+  width: 100%;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-warm);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-muted);
+  letter-spacing: 0.05em;
+}
